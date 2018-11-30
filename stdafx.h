@@ -1,7 +1,5 @@
 #pragma once
 #include <iostream>
-#include <clocale>
-#include <cmath>
 
 class drob {
 private:

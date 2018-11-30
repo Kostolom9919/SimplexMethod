@@ -5,7 +5,7 @@ using namespace std;
 int main() {
 	int n, m, *Z, i, j, a;
 	drob **Table, *Marks, Basis;
-	//system("color F0");
+	system("color F0");
 	setlocale(LC_ALL, "Rus");
 	cout << sizeof(drob);
 	cout << "Кол-во X : ";
