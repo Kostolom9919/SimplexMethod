@@ -12,22 +12,22 @@ drob operator- (drob a, drob b) {
 	drob s;
 	s.zn = Nok(a.zn, b.zn);
 	s.ch = a.ch*s.zn / a.zn - b.ch*s.zn / b.zn;
-	s.ch /= Nod(s.zn, abs(s.ch));
-	s.zn /= Nod(s.zn, abs(s.ch));
+	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
+	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
 	return s;
 }
 drob operator* (drob a, drob b) {
 	a.ch *= b.ch;
 	a.zn *= b.zn;
-	a.ch /= Nod(abs(a.ch), a.zn);
-	a.zn /= Nod(abs(a.ch), a.zn);
+	a.ch /= Nod((int)(abs((int)a.ch)), a.zn);
+	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
 	return a;
 }
 drob operator/ (drob a, drob b) {
 	a.ch *= b.zn;
 	a.zn *= b.ch;
-	a.ch /= Nod(abs(a.ch), a.zn);
-	a.zn /= Nod(abs(a.ch), a.zn);
+	a.ch /= Nod((int)(abs((int)a.ch)), a.zn);
+	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
 	return a;
 }
 bool operator==(drob a, drob b) {
