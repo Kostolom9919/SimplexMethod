@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Дроби", "Дроби\Дроби.vcxproj", "{AC1BA176-DD3A-4EA8-8F10-8B0133C8439F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fraction", "Fraction.vcxproj", "{AC1BA176-DD3A-4EA8-8F10-8B0133C8439F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {96342730-5E52-41E9-A7BE-7C156B9A9B5B}
+		SolutionGuid = {810631F7-D142-455E-810A-C8EF382AB85F}
 	EndGlobalSection
 EndGlobal

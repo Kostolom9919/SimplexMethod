@@ -1,1 +1,5 @@
-add_executable(test MainPrograme.cpp)
+cmake_minimum_required(VERSION 3.8)
+
+add_executable(NECHTO MainPrograme.cpp stdafx.h Realize.cpp)
+
+project(Fraction)
