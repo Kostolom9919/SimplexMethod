@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "Äðîáè/stdafx.h"
 
 using namespace std;
 
@@ -7,16 +7,16 @@ int main() {
 	drob **Table, *Marks, Basis;
 	system("color F0");
 	setlocale(LC_ALL, "Rus");
-	cout << "ÃŠÃ®Ã«-Ã¢Ã® X : ";
+	cout << "Êîë-âî X : ";
 	cin >> m;
-	cout << "ÃŠÃ®Ã«-Ã¢Ã® Ã®Ã£Ã°Ã Ã­Ã¨Ã·Ã¥Ã­Ã¨Ã© : ";
+	cout << "Êîë-âî îãðàíè÷åíèé : ";
 	cin >> n;
 	Table = new drob*[n];
 	Marks = new drob[n + m + 1];
 	Z = new int[m];
 	for (int i = 0; i < n; i++)
 		Table[i] = new drob[n + m + 2];
-	cout << "ÃŠÃ®Ã½Ã´Ã´Ã¨Ã¶Ã¨Ã¥Ã­Ã²Ã» X Ã¶Ã¥Ã«Ã¥Ã¢Ã®Ã© Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¨" << endl;
+	cout << "Êîýôôèöèåíòû X öåëåâîé ôóíêöèè" << endl;
 	for (int i = 0; i < m; i++) {
 		cout << "   X" << i+1 << ": ";
 		cin >> Z[i];
@@ -28,7 +28,7 @@ int main() {
 	for ( ; i < n+m+1 ; i++)
 		Marks[i].Set();
 	for (i = 0; i < n; i++) {
-		cout << "ÃŽÃ£Ã°Ã Ã­Ã¨Ã·Ã¥Ã­Ã¨Ã¥ Â¹" << i+1 << endl;
+		cout << "Îãðàíè÷åíèå ¹" << i+1 << endl;
 		Table[i][0].Set();
 		Table[i][1].Set();
 		for (j = 2; j < m+2; j++) {
