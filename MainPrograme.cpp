@@ -43,6 +43,8 @@ int main() {
 			cout << "   X" << j-1 << ": ";
 			cin >> Table[i][j];
 		}
+		cout << "Решение : ";
+		cin >> Table[i][j-m-1];
 		a = j;
 		for (; j < n+a; j++) 
 			if(i==j-a)
@@ -50,8 +52,13 @@ int main() {
 			else
 				Table[i][j].Set();
 	}
-	cout << endl;
-	system("cls"); 
+	system("cls");
+	while(CheckOne(Table, n)){
+
+	}
+	while (CheckTwo(Marks, n, m)) {
+
+	}
 	OutAnswer(Table, Marks, Basis, n, m);
 	system("pause");
 	for (i = 0; i < n; i++)

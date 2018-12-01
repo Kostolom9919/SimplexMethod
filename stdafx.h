@@ -58,3 +58,5 @@ public:
 int Nok(int, int);
 int Nod(int, int);
 void OutAnswer(drob**, drob*, std::string*, int, int);
+bool CheckOne(drob**, int);
+bool CheckTwo(drob*, int, int);

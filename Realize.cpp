@@ -213,3 +213,13 @@ void OutAnswer(drob **A, drob *B, std::string* C, int n, int m) {
 	cout << endl;
 	return;
 }
+bool CheckOne(drob** A, int n) {
+	for (int i = 0; i < n; i++)
+		if (A[i][1] < 0) return true;
+	return false;
+}
+bool CheckTwo(drob* B, int n, int m) {
+	for (int i = 1; i < n + m; i++)
+		if (B[i] > 0) return true;
+	return false;
+}
