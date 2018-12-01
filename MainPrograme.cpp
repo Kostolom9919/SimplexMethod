@@ -57,8 +57,7 @@ int main() {
 	if(CheckOne(Table, n)){
 		i = j = 0;
 		BasisNumber = FunctionOne(Table,Marks,n,m,x,y);
-		cout << "Не оптимально 1" << endl;
-		cout << i << " " << j << " " << BasisNumber << endl;
+		cout << x << " " << y << " " << BasisNumber << endl;
 	}
 	while (CheckTwo(Marks, n, m)) {
 		cout << "Не оптимально 2" << endl;
