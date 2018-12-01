@@ -219,7 +219,47 @@ bool CheckOne(drob** A, int n) {
 	return false;
 }
 bool CheckTwo(drob* B, int n, int m) {
-	for (int i = 1; i < n + m; i++)
+	for (int i = 1; i < n + m + 1; i++)
 		if (B[i] > 0) return true;
 	return false;
+}
+drob FunctionOne(drob** A, drob* B, const int n, int m, int& base1, int& base2) {
+	drob *a, answ;
+	int *index, i = 0;
+	index = new int[m];
+	a = new drob[m];
+	for (int j = 2; j < m + 2; j++) {
+		if (A[0][j] * A[0][1] > 0) {
+			a[0] = A[0][1] / A[0][j];
+			index[0] = i;
+		}
+		else {	
+			for (; i < n; i++) 
+				if (A[i][j] * A[i][1] > 0) {
+					a[0] = A[i][1] / A[i][j];
+					index[0] = i;
+					break;
+				}
+		}
+		for (; i < n; i++) 
+			if (A[i][1] * A[i][j] > 0 && A[i][1] / A[i][j] < a[j - 2]) {
+				a[j - 2] = A[i][1] / A[i][j];
+				index[j - 2] = i;
+			}
+		if (a[j - 2] >= 0)
+			a[j - 2] = a[j - 2] * B[j - 1];
+	}
+	i = 0;
+	while (a[i] == -100)i++;
+	answ = a[i];
+	base1 = i;
+	base2 = 2;
+	for (; i < m; i++)
+		if (a[i] != -100 && a[i] > answ) {
+			answ = a[i];
+			base2 = i+1;
+			base1 = index[i];
+		}
+	answ = A[base1][base2];
+	return answ;
 }

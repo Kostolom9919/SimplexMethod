@@ -60,3 +60,4 @@ int Nod(int, int);
 void OutAnswer(drob**, drob*, std::string*, int, int);
 bool CheckOne(drob**, int);
 bool CheckTwo(drob*, int, int);
+drob FunctionOne(drob**, drob*, int, int ,int& ,int&);

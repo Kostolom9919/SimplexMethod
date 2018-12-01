@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-	int n, m, *Z, i, j, a;
+	int n, m, *Z, x, y, l, i, j;
 	drob **Table, *Marks, BasisNumber;
 	string *Basis, *Not_Basis;
 	system("color F0");
@@ -13,7 +13,7 @@ int main() {
 	cout << "Кол-во ограничений : ";
 	cin >> n;
 	Basis = new string[n];
-	Not_Basis = new string[n];
+	Not_Basis = new string[m];
 	Table = new drob*[n];
 	Marks = new drob[n + m + 1];
 	Z = new int[m];
@@ -23,7 +23,7 @@ int main() {
 		Basis[i] += char(49 + i);
 	}
 	cout << "Коэффициенты X целевой функции" << endl;
-	for (int i = 0; i < m; i++) {
+	for (i = 0; i < m; i++) {
 		cout << "   X" << i+1 << ": ";
 		cin >> Z[i];
 		Not_Basis[i] = "X";
@@ -45,21 +45,26 @@ int main() {
 		}
 		cout << "Решение : ";
 		cin >> Table[i][j-m-1];
-		a = j;
-		for (; j < n+a; j++) 
-			if(i==j-a)
+		l = j;
+		for (; j < n+l; j++) 
+			if(i==j-l)
 				Table[i][j].Set(1);
 			else
 				Table[i][j].Set();
 	}
 	system("cls");
-	while(CheckOne(Table, n)){
-
+	OutAnswer(Table, Marks, Basis, n, m);
+	if(CheckOne(Table, n)){
+		i = j = 0;
+		BasisNumber = FunctionOne(Table,Marks,n,m,i,j);
+		cout << "Не оптимально 1" << endl;
+		cout << i << " " << j << " " << BasisNumber << endl;
 	}
 	while (CheckTwo(Marks, n, m)) {
-
+		cout << "Не оптимально 2" << endl;
+		break;
 	}
-	OutAnswer(Table, Marks, Basis, n, m);
+	
 	system("pause");
 	for (i = 0; i < n; i++)
 		delete[] Table[i];
