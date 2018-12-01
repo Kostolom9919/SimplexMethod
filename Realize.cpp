@@ -31,11 +31,27 @@ drob operator/ (drob a, drob b) {
 	return a;
 }
 bool operator==(drob a, drob b) {
-	if (a.ch == b.ch && a.zn == b.zn)return true;
+	if (a.ch*b.zn == b.ch*a.zn)return true;
+	return false;
+}
+bool operator==(drob a, int b) {
+	if (a.ch == b * a.zn)return true;
+	return false;
+}
+bool operator==(int a, drob b) {
+	if (a*b.zn == b.ch)return true;
 	return false;
 }
 bool operator!=(drob a, drob b) {
-	if (a.ch != b.ch && a.zn != b.zn)return true;
+	if (!(a.ch*b.zn == b.ch*a.zn))return true;
+	return false;
+}
+bool operator!=(drob a, int b) {
+	if (!(a.ch == b*a.zn))return true;
+	return false;
+}
+bool operator!=(int a, drob b) {
+	if (!(a*b.zn == b.ch))return true;
 	return false;
 }
 bool operator< (drob a, drob b) {
