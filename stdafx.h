@@ -11,22 +11,30 @@ public:
 	void Set(int a, int b) { ch = a; if (b != 0)zn = b; else zn = 1; }
 	void Set(int a) { ch = a; zn = 1;}
 	void Set() { ch = 0; zn = 1;}
-	friend drob operator+(drob, drob);
-	friend drob operator-(drob, drob);
-	friend drob operator*(drob, drob);
-	friend drob operator/(drob, drob);
+	friend drob operator+ (drob, drob);
+	friend drob operator+ (drob, int);
+	friend drob operator+ (int, drob);
+	friend drob operator- (drob, drob);
+	friend drob operator- (drob, int);
+	friend drob operator- (int, drob);
+	friend drob operator* (drob, drob);
+	friend drob operator* (drob, int);
+	friend drob operator* (int, drob);
+	friend drob operator/ (drob, drob);
+	friend drob operator/ (drob, int);
+	friend drob operator/ (int, drob);
 	friend bool operator==(drob, drob);
 	friend bool operator==(drob, int);
 	friend bool operator==(int, drob);
 	friend bool operator!=(drob, drob);
 	friend bool operator!=(drob, int);
 	friend bool operator!=(int, drob);
-	friend bool operator<(drob, drob);
-	friend bool operator<(drob, int);
-	friend bool operator<(int, drob);
-	friend bool operator>(drob, drob);
-	friend bool operator>(drob, int);
-	friend bool operator>(int, drob);
+	friend bool operator< (drob, drob);
+	friend bool operator< (drob, int);
+	friend bool operator< (int, drob);
+	friend bool operator> (drob, drob);
+	friend bool operator> (drob, int);
+	friend bool operator> (int, drob);
 	friend bool operator>=(drob, drob);
 	friend bool operator>=(drob, int);
 	friend bool operator>=(int, drob);

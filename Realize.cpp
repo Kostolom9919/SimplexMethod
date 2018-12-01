@@ -8,10 +8,42 @@ drob operator+ (drob a, drob b) {
 	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
 	return s;
 }
+drob operator+ (drob a, int b) {
+	drob s;
+	s.zn = a.zn;
+	s.ch = a.ch + b * a.zn;
+	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
+	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	return s;
+}
+drob operator+ (int a, drob b) {
+	drob s;
+	s.zn = b.zn;
+	s.ch = b.ch + a * b.zn;
+	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
+	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	return s;
+}
 drob operator- (drob a, drob b) {
 	drob s;
 	s.zn = Nok(a.zn, b.zn);
 	s.ch = a.ch*s.zn / a.zn - b.ch*s.zn / b.zn;
+	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
+	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	return s;
+}
+drob operator- (drob a, int b) {
+	drob s;
+	s.zn = a.zn;
+	s.ch = a.ch - b * a.zn;
+	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
+	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	return s;
+}
+drob operator- (int a, drob b) {
+	drob s;
+	s.zn = b.zn;
+	s.ch = b.ch + a * b.zn;
 	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
 	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
 	return s;
@@ -23,12 +55,36 @@ drob operator* (drob a, drob b) {
 	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
 	return a;
 }
+drob operator* (drob a, int b) {
+	a.ch *= b;
+	a.ch /= Nod((int)(abs((int)a.ch)), a.zn);
+	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
+	return a;
+}
+drob operator* (int a, drob b) {
+	b.ch *= a;
+	b.ch /= Nod((int)(abs((int)b.ch)), b.zn);
+	b.zn /= Nod((int)(abs((int)b.ch)), b.zn);
+	return b;
+}
 drob operator/ (drob a, drob b) {
 	a.ch *= b.zn;
 	a.zn *= b.ch;
 	a.ch /= Nod((int)(abs((int)a.ch)), a.zn);
 	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
 	return a;
+}
+drob operator/ (drob a, int b) {
+	a.zn *= b;
+	a.ch /= Nod((int)(abs((int)a.ch)), a.zn);
+	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
+	return a;
+}
+drob operator/ (int a, drob b) {
+	b.ch *= a;
+	b.ch /= Nod((int)(abs((int)b.ch)), b.zn);
+	b.zn /= Nod((int)(abs((int)b.ch)), b.zn);
+	return b;
 }
 bool operator==(drob a, drob b) {
 	if (a.ch*b.zn == b.ch*a.zn)return true;
