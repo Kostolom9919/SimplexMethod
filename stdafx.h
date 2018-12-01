@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <cstring>
+#include <string>
 
 class drob {
 private:
@@ -15,30 +15,39 @@ public:
 	friend drob operator+ (drob, drob);
 	friend drob operator+ (drob, int);
 	friend drob operator+ (int, drob);
+
 	friend drob operator- (drob, drob);
 	friend drob operator- (drob, int);
 	friend drob operator- (int, drob);
+
 	friend drob operator* (drob, drob);
 	friend drob operator* (drob, int);
 	friend drob operator* (int, drob);
+
 	friend drob operator/ (drob, drob);
 	friend drob operator/ (drob, int);
 	friend drob operator/ (int, drob);
+
 	friend bool operator==(drob, drob);
 	friend bool operator==(drob, int);
 	friend bool operator==(int, drob);
+
 	friend bool operator!=(drob, drob);
 	friend bool operator!=(drob, int);
 	friend bool operator!=(int, drob);
+
 	friend bool operator< (drob, drob);
 	friend bool operator< (drob, int);
 	friend bool operator< (int, drob);
+
 	friend bool operator> (drob, drob);
 	friend bool operator> (drob, int);
 	friend bool operator> (int, drob);
+
 	friend bool operator>=(drob, drob);
 	friend bool operator>=(drob, int);
 	friend bool operator>=(int, drob);
+
 	friend bool operator<=(drob, drob);
 	friend bool operator<=(drob, int);
 	friend bool operator<=(int, drob);

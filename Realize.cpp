@@ -198,18 +198,18 @@ int Nod(int a, int b) {
 	return b == 0 ? a : Nod(b, a % b);
 }
 void OutAnswer(drob **A, drob *B, std::string* C, int n, int m) {
+	using namespace std;
 	for (int i = 0; i < n; i++) {
-		printf("%s ", C[i]);
+		cout << C[i] << " ";
 		for (int j = 0; j < n + m + 2; j++) {
-			std::cout.width(5);
-			std::cout << A[i][j];
+			cout << A[i][j];
 		}
-		std::cout << std::endl;
+		cout << endl;
 	}
-	std::cout << "Zi-Cj     ";
+	cout << "Zi-Cj     ";
 	for (int i = 0; i < n + m + 1; i++) {
-		std::cout << B[i];
+		cout << B[i];
 	}
-	std::cout << std::endl;
+	cout << endl;
 	return;
 }
