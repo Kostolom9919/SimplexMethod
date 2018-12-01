@@ -6,6 +6,7 @@ drob operator+ (drob a, drob b) {
 	s.ch = a.ch*s.zn / a.zn + b.ch*s.zn / b.zn;
 	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
 	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	return s;
 }
 drob operator- (drob a, drob b) {
 	drob s;
