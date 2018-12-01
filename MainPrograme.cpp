@@ -56,7 +56,7 @@ int main() {
 	OutAnswer(Table, Marks, Basis, n, m);
 	if(CheckOne(Table, n)){
 		i = j = 0;
-		BasisNumber = FunctionOne(Table,Marks,n,m,i,j);
+		BasisNumber = FunctionOne(Table,Marks,n,m,x,y);
 		cout << "Не оптимально 1" << endl;
 		cout << i << " " << j << " " << BasisNumber << endl;
 	}
