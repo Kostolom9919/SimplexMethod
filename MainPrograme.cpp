@@ -5,7 +5,7 @@ using namespace std;
 int main() {
 	int n, m, *Z, i, j, a;
 	drob **Table, *Marks, BasisNumber;
-	string *Basis;
+	string *Basis, *Not_Basis;
 	system("color F0");
 	setlocale(LC_ALL, "Rus");
 	cout << "Кол-во X : ";
@@ -13,6 +13,7 @@ int main() {
 	cout << "Кол-во ограничений : ";
 	cin >> n;
 	Basis = new string[n];
+	Not_Basis = new string[n];
 	Table = new drob*[n];
 	Marks = new drob[n + m + 1];
 	Z = new int[m];
@@ -25,6 +26,8 @@ int main() {
 	for (int i = 0; i < m; i++) {
 		cout << "   X" << i+1 << ": ";
 		cin >> Z[i];
+		Not_Basis[i] = "X";
+		Not_Basis[i] += char(49 + i);
 	}
 	cout << endl;
 	Marks[0].Set();
