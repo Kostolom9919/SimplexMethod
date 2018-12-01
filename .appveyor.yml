@@ -27,4 +27,4 @@ build:
 test_script:
     # скрипт тестирования проекта:
     - ctest -C %CONFIGURATION% --output-on-failure
-    - '%APPVEYOR_BUILD_FOLDER%\%CONFIGURATION%\tests.exe'
+ 
