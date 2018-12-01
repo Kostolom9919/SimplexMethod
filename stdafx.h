@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cstring>
 
 class drob {
 private:
@@ -47,4 +48,4 @@ public:
 
 int Nok(int, int);
 int Nod(int, int);
-void OutAnswer(drob**, drob*, int, int);
+void OutAnswer(drob**, drob*, std::string*, int, int);

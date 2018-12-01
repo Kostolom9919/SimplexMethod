@@ -4,18 +4,23 @@ using namespace std;
 
 int main() {
 	int n, m, *Z, i, j, a;
-	drob **Table, *Marks, Basis;
+	drob **Table, *Marks, BasisNumber;
+	string *Basis;
 	system("color F0");
 	setlocale(LC_ALL, "Rus");
 	cout << "Кол-во X : ";
 	cin >> m;
 	cout << "Кол-во ограничений : ";
 	cin >> n;
+	Basis = new string[n];
 	Table = new drob*[n];
 	Marks = new drob[n + m + 1];
 	Z = new int[m];
-	for (int i = 0; i < n; i++)
+	for (i = 0; i < n; i++) {
 		Table[i] = new drob[n + m + 2];
+		Basis[i] = "S";
+		Basis[i] += char(49 + i);
+	}
 	cout << "Коэффициенты X целевой функции" << endl;
 	for (int i = 0; i < m; i++) {
 		cout << "   X" << i+1 << ": ";
@@ -44,7 +49,7 @@ int main() {
 	}
 	cout << endl;
 	system("cls"); 
-	OutAnswer(Table, Marks, n, m);
+	OutAnswer(Table, Marks, Basis, n, m);
 	system("pause");
 	for (i = 0; i < n; i++)
 		delete[] Table[i];

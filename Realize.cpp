@@ -170,15 +170,24 @@ bool operator<=(int a, drob b) {
 	return false;
 }
 std::ostream& operator<<(std::ostream &out, const drob &a) {
-	if (a.zn != 1)
-		out << a.ch << "/" << a.zn;
-	else
-		out << a.ch;
+	if (a.zn != 1) {
+		std::cout.width(3);
+		out << std::right << a.ch << "/";
+		std::cout.width(3);
+		out	<< std::left << a.zn;
+	}
+	else{
+		std::cout.width(4);
+		out << std::right << a.ch << "   ";
+	}
 	return out;
 }
 std::istream& operator>>(std::istream &in, drob &a) {
 	in >> a.ch;
-	in >> a.zn;
+	if (getchar() == '/')
+		in >> a.zn;
+	else
+		a.zn = 1;
 	return in;
 }
 
@@ -188,18 +197,17 @@ int Nok(int a, int b) {
 int Nod(int a, int b) {
 	return b == 0 ? a : Nod(b, a % b);
 }
-void OutAnswer(drob **A, drob *B, int n, int m) {
+void OutAnswer(drob **A, drob *B, std::string* C, int n, int m) {
 	for (int i = 0; i < n; i++) {
-		std::cout << "S" << i + 1 << " ";
+		printf("%s ", C[i]);
 		for (int j = 0; j < n + m + 2; j++) {
 			std::cout.width(5);
 			std::cout << A[i][j];
 		}
 		std::cout << std::endl;
 	}
-	std::cout << "Zi-Cj   ";
+	std::cout << "Zi-Cj     ";
 	for (int i = 0; i < n + m + 1; i++) {
-		std::cout.width(5);
 		std::cout << B[i];
 	}
 	std::cout << std::endl;
