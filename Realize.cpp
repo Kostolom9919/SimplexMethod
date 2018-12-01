@@ -1,89 +1,117 @@
 #include "stdafx.h"
 
 drob operator+ (drob a, drob b) {
+	int x;
 	drob s;
 	s.zn = Nok(a.zn, b.zn);
 	s.ch = a.ch*s.zn / a.zn + b.ch*s.zn / b.zn;
-	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
-	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	x = Nod(s.zn, (int)(abs((int)s.ch)));
+	s.ch /= x;
+	s.zn /= x;
 	return s;
 }
 drob operator+ (drob a, int b) {
+	int x;
 	drob s;
 	s.zn = a.zn;
 	s.ch = a.ch + b * a.zn;
-	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
-	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	x = Nod(s.zn, (int)(abs((int)s.ch)));
+	s.ch /= x;
+	s.zn /= x;
 	return s;
 }
 drob operator+ (int a, drob b) {
+	int x;
 	drob s;
 	s.zn = b.zn;
 	s.ch = b.ch + a * b.zn;
-	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
-	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	x = Nod(s.zn, (int)(abs((int)s.ch)));
+	s.ch /= x;
+	s.zn /= x;
 	return s;
 }
 drob operator- (drob a, drob b) {
+	int x;
 	drob s;
 	s.zn = Nok(a.zn, b.zn);
 	s.ch = a.ch*s.zn / a.zn - b.ch*s.zn / b.zn;
-	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
-	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	x = Nod(s.zn, (int)(abs((int)s.ch)));
+	s.ch /= x;
+	s.zn /= x;
 	return s;
 }
 drob operator- (drob a, int b) {
+	int x;
 	drob s;
 	s.zn = a.zn;
 	s.ch = a.ch - b * a.zn;
-	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
-	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	x = Nod(s.zn, (int)(abs((int)s.ch)));
+	s.ch /= x;
+	s.zn /= x;
 	return s;
 }
 drob operator- (int a, drob b) {
+	int x;
 	drob s;
 	s.zn = b.zn;
 	s.ch = b.ch + a * b.zn;
-	s.ch /= Nod(s.zn, (int)(abs((int)s.ch)));
-	s.zn /= Nod(s.zn, (int)(abs((int)s.ch)));
+	x = Nod(s.zn, (int)(abs((int)s.ch)));
+	s.ch /= x;
+	s.zn /= x;
 	return s;
 }
 drob operator* (drob a, drob b) {
+	int x;
 	a.ch *= b.ch;
 	a.zn *= b.zn;
-	a.ch /= Nod((int)(abs((int)a.ch)), a.zn);
-	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
+	x = Nod((int)(abs((int)a.ch)), a.zn);
+	a.ch /= x;
+	a.zn /= x;
 	return a;
 }
 drob operator* (drob a, int b) {
+	int x;
 	a.ch *= b;
-	a.ch /= Nod((int)(abs((int)a.ch)), a.zn);
-	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
+	x = Nod((int)(abs((int)a.ch)), a.zn);
+	a.ch /= x;
+	a.zn /= x;
 	return a;
 }
 drob operator* (int a, drob b) {
+	int x;
 	b.ch *= a;
-	b.ch /= Nod((int)(abs((int)b.ch)), b.zn);
-	b.zn /= Nod((int)(abs((int)b.ch)), b.zn);
+	x = Nod((int)(abs((int)b.ch)), b.zn);
+	b.ch /= x;
+	b.zn /= x;
 	return b;
 }
 drob operator/ (drob a, drob b) {
+	int x;
+	if (b < 0) {
+		b.ch *= -1;
+		b.zn *= -1;
+	}
 	a.ch *= b.zn;
 	a.zn *= b.ch;
-	a.ch /= Nod((int)(abs((int)a.ch)), a.zn);
-	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
+	x = Nod((int)(abs((int)a.ch)), a.zn);
+	a.ch /= x;
+	a.zn /= x;
 	return a;
 }
 drob operator/ (drob a, int b) {
+	int x;
 	a.zn *= b;
-	a.ch /= Nod((int)(abs((int)a.ch)), a.zn);
-	a.zn /= Nod((int)(abs((int)a.ch)), a.zn);
+	x = Nod((int)(abs((int)a.ch)), a.zn);
+	a.ch /= x;
+	a.zn /= x;
 	return a;
 }
 drob operator/ (int a, drob b) {
+	int x;
 	b.ch *= a;
-	b.ch /= Nod((int)(abs((int)b.ch)), b.zn);
-	b.zn /= Nod((int)(abs((int)b.ch)), b.zn);
+	x = Nod((int)(abs((int)b.ch)), b.zn);
+	b.ch /= x;
+	b.zn /= x;
 	return b;
 }
 bool operator==(drob a, drob b) {
@@ -228,38 +256,32 @@ drob FunctionOne(drob** A, drob* B, const int n, int m, int& base1, int& base2) 
 	int *index, i = 0;
 	index = new int[m];
 	a = new drob[m];
+	index[0] = i;
 	for (int j = 2; j < m + 2; j++) {
-		if (A[0][j] * A[0][1] > 0) {
-			a[0] = A[0][1] / A[0][j];
-			index[0] = i;
-		}
-		else {	
-			for (; i < n; i++) 
-				if (A[i][j] * A[i][1] > 0) {
-					a[0] = A[i][1] / A[i][j];
-					index[0] = i;
-					break;
-				}
-		}
-		for (; i < n; i++) 
-			if (A[i][1] * A[i][j] > 0 && A[i][1] / A[i][j] < a[j - 2]) {
+		a[j - 2] = 1000;
+		index[j - 2] = 0;
+		for (i = 0; i < n; i++) 
+			if ((A[i][1] * A[i][j] > 0) && (A[i][1] / A[i][j] < a[j - 2])) {
 				a[j - 2] = A[i][1] / A[i][j];
 				index[j - 2] = i;
 			}
+		if (a[j - 2] == 1000)
+			a[j - 2] = -1000;
 		if (a[j - 2] >= 0)
 			a[j - 2] = a[j - 2] * B[j - 1];
 	}
 	i = 0;
-	while (a[i] == -100)i++;
-	answ = a[i];
+	answ = -100;
 	base1 = i;
-	base2 = 2;
+	base2 = 2+i;
 	for (; i < m; i++)
-		if (a[i] != -100 && a[i] > answ) {
+		if (a[i] > answ) {
 			answ = a[i];
-			base2 = i+1;
+			base2 = i + 2;
 			base1 = index[i];
 		}
 	answ = A[base1][base2];
+	delete a;
+	delete index;
 	return answ;
 }
