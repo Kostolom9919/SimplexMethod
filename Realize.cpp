@@ -3,11 +3,15 @@
 drob operator+ (drob a, drob b) {
 	int x;
 	drob s;
-	s.zn = Nok(a.zn, b.zn);
-	s.ch = a.ch*s.zn / a.zn + b.ch*s.zn / b.zn;
+	s.zn = a.zn * b.zn;
+	s.ch = a.ch * b.zn + b.ch * a.zn;
 	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	s.ch /= x;
-	s.zn /= x;
+	if (x != 0) {
+		s.ch /= x;
+		s.zn /= x;
+	}
+	if (s.ch == 0)
+		s.zn = 1;
 	return s;
 }
 drob operator+ (drob a, int b) {
@@ -16,8 +20,12 @@ drob operator+ (drob a, int b) {
 	s.zn = a.zn;
 	s.ch = a.ch + b * a.zn;
 	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	s.ch /= x;
-	s.zn /= x;
+	if (x != 0) {
+		s.ch /= x;
+		s.zn /= x;
+	}
+	if (s.ch == 0)
+		s.zn = 1;
 	return s;
 }
 drob operator+ (int a, drob b) {
@@ -26,18 +34,26 @@ drob operator+ (int a, drob b) {
 	s.zn = b.zn;
 	s.ch = b.ch + a * b.zn;
 	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	s.ch /= x;
-	s.zn /= x;
+	if (x != 0) {
+		s.ch /= x;
+		s.zn /= x;
+	}
+	if (s.ch == 0)
+		s.zn = 1;
 	return s;
 }
 drob operator- (drob a, drob b) {
 	int x;
 	drob s;
-	s.zn = Nok(a.zn, b.zn);
-	s.ch = a.ch*s.zn / a.zn - b.ch*s.zn / b.zn;
+	s.zn = a.zn * b.zn;
+	s.ch = a.ch * b.zn - b.ch * a.zn;
 	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	s.ch /= x;
-	s.zn /= x;
+	if (x != 0) {
+		s.ch /= x;
+		s.zn /= x;
+	}
+	if (s.ch == 0)
+		s.zn = 1;
 	return s;
 }
 drob operator- (drob a, int b) {
@@ -46,8 +62,12 @@ drob operator- (drob a, int b) {
 	s.zn = a.zn;
 	s.ch = a.ch - b * a.zn;
 	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	s.ch /= x;
-	s.zn /= x;
+	if (x != 0) {
+		s.ch /= x;
+		s.zn /= x;
+	}
+	if (s.ch == 0)
+		s.zn = 1;
 	return s;
 }
 drob operator- (int a, drob b) {
@@ -56,8 +76,12 @@ drob operator- (int a, drob b) {
 	s.zn = b.zn;
 	s.ch = b.ch + a * b.zn;
 	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	s.ch /= x;
-	s.zn /= x;
+	if (x != 0) {
+		s.ch /= x;
+		s.zn /= x;
+	}
+	if (s.ch == 0)
+		s.zn = 1;
 	return s;
 }
 drob operator* (drob a, drob b) {
@@ -65,24 +89,36 @@ drob operator* (drob a, drob b) {
 	a.ch *= b.ch;
 	a.zn *= b.zn;
 	x = Nod((int)(abs((int)a.ch)), a.zn);
-	a.ch /= x;
-	a.zn /= x;
+	if (x != 0) {
+		a.ch /= x;
+		a.zn /= x;
+	}
+	if (a.ch == 0)
+		a.zn = 1;
 	return a;
 }
 drob operator* (drob a, int b) {
 	int x;
 	a.ch *= b;
 	x = Nod((int)(abs((int)a.ch)), a.zn);
-	a.ch /= x;
-	a.zn /= x;
+	if (x != 0) {
+		a.ch /= x;
+		a.zn /= x;
+	}
+	if (a.ch == 0)
+		a.zn = 1;
 	return a;
 }
 drob operator* (int a, drob b) {
 	int x;
 	b.ch *= a;
 	x = Nod((int)(abs((int)b.ch)), b.zn);
-	b.ch /= x;
-	b.zn /= x;
+	if (x != 0) {
+		b.ch /= x;
+		b.zn /= x;
+	}
+	if (b.ch == 0)
+		b.zn = 1;
 	return b;
 }
 drob operator/ (drob a, drob b) {
@@ -94,24 +130,36 @@ drob operator/ (drob a, drob b) {
 	a.ch *= b.zn;
 	a.zn *= b.ch;
 	x = Nod((int)(abs((int)a.ch)), a.zn);
-	a.ch /= x;
-	a.zn /= x;
+	if (x != 0) {
+		a.ch /= x;
+		a.zn /= x;
+	}	
+	if (a.ch == 0)
+		a.zn = 1;
 	return a;
 }
 drob operator/ (drob a, int b) {
 	int x;
 	a.zn *= b;
 	x = Nod((int)(abs((int)a.ch)), a.zn);
-	a.ch /= x;
-	a.zn /= x;
+	if (x != 0) {
+		a.ch /= x;
+		a.zn /= x;
+	}
+	if (a.ch == 0)
+		a.zn = 1;
 	return a;
 }
 drob operator/ (int a, drob b) {
 	int x;
 	b.ch *= a;
 	x = Nod((int)(abs((int)b.ch)), b.zn);
-	b.ch /= x;
-	b.zn /= x;
+	if (x != 0) {
+		b.ch /= x;
+		b.zn /= x;
+	}
+	if (b.ch == 0)
+		b.zn = 1;
 	return b;
 }
 bool operator==(drob a, drob b) {
@@ -225,63 +273,84 @@ int Nok(int a, int b) {
 int Nod(int a, int b) {
 	return b == 0 ? a : Nod(b, a % b);
 }
-void OutAnswer(drob **A, drob *B, std::string* C, int n, int m) {
+void OutAnswer(drob **A, std::string* C, int n, int m) {
 	using namespace std;
-	for (int i = 0; i < n; i++) {
-		cout << C[i] << " ";
-		for (int j = 0; j < n + m + 2; j++) {
+	for (int i = 0; i < n + 1 ; i++) {
+		if (i == n ) 
+			cout << "Zi-Cj  ";
+		else
+			cout << C[i] << "     ";
+		for (int j = 0; j < n + m + 1; j++) {
 			cout << A[i][j];
 		}
 		cout << endl;
-	}
-	cout << "Zi-Cj     ";
-	for (int i = 0; i < n + m + 1; i++) {
-		cout << B[i];
 	}
 	cout << endl;
 	return;
 }
 bool CheckOne(drob** A, int n) {
 	for (int i = 0; i < n; i++)
-		if (A[i][1] < 0) return true;
+		if (A[i][0] < 0) return true;
 	return false;
 }
-bool CheckTwo(drob* B, int n, int m) {
+bool CheckTwo(drob** A, int n, int m) {
 	for (int i = 1; i < n + m + 1; i++)
-		if (B[i] > 0) return true;
+		if (A[n][i] > 0) return true;
 	return false;
 }
-drob FunctionOne(drob** A, drob* B, const int n, int m, int& base1, int& base2) {
+drob FunctionOne(drob** A, const int n, int m, int& base1, int& base2) {
 	drob *a, answ;
 	int *index, i = 0;
 	index = new int[m];
-	a = new drob[m];
-	index[0] = i;
-	for (int j = 2; j < m + 2; j++) {
-		a[j - 2] = 1000;
-		index[j - 2] = 0;
+	a = new drob[m];	
+	for (int j = 1; j < m + 1; j++) {
+		a[j - 1] = 1000;
+		index[j - 1] = 1;
 		for (i = 0; i < n; i++) 
-			if ((A[i][1] * A[i][j] > 0) && (A[i][1] / A[i][j] < a[j - 2])) {
-				a[j - 2] = A[i][1] / A[i][j];
-				index[j - 2] = i;
+			if ((A[i][0] * A[i][j] > 0) && (A[i][0] / A[i][j] < a[j - 1])) {
+				a[j - 1] = A[i][0] / A[i][j];
+				index[j - 1] = i;
 			}
-		if (a[j - 2] == 1000)
-			a[j - 2] = -1000;
-		if (a[j - 2] >= 0)
-			a[j - 2] = a[j - 2] * B[j - 1];
+		if (a[j - 1] == 1000)
+			a[j - 1] = -1000;
+		else
+			a[j - 1] = a[j - 1] * A[2][j];
+		if (A[2][j] == 0) a[j - 1] = -1000;
 	}
-	i = 0;
 	answ = -100;
-	base1 = i;
-	base2 = 2+i;
-	for (; i < m; i++)
+	for (i = 0; i < m; i++) {
 		if (a[i] > answ) {
 			answ = a[i];
-			base2 = i + 2;
+			base2 = i + 1;
 			base1 = index[i];
 		}
+	}
 	answ = A[base1][base2];
 	delete a;
 	delete index;
 	return answ;
+}
+void NewTable(drob ** A, drob** _A, std::string* C, std::string* _C, int n, int m, int x, int y) {
+	std::string str;
+	drob Base = A[x][y];
+	str = C[x];
+	C[x] = _C[y - 1];
+	_C[y - 1] = str;
+	for (int i = 0; i < n + 1; i++) {
+		for (int j = 0; j < n + m + 1; j++) {
+			if (j != y && x != i) {
+				drob a1 = A[i][j] * Base;
+				drob a2 = A[i][y] * A[x][j];
+				drob a3 = a1 - a2;
+				_A[i][j] = a3 / Base;
+			}
+			else if (i == x && j != y) {
+				_A[i][j] = A[i][j] / Base;
+			} 
+			else if (j == y){
+				_A[i][j] = A[i][m + x + 1];
+			} 
+		}
+	}
+	return;
 }

@@ -57,7 +57,8 @@ public:
 
 int Nok(int, int);
 int Nod(int, int);
-void OutAnswer(drob**, drob*, std::string*, int, int);
+void OutAnswer(drob**, std::string*, int, int);
 bool CheckOne(drob**, int);
-bool CheckTwo(drob*, int, int);
-drob FunctionOne(drob**, drob*, int, int ,int& ,int&);
+bool CheckTwo(drob**, int, int);
+drob FunctionOne(drob**, int, int ,int& ,int&);
+void NewTable(drob **, drob**, std::string*, std::string*, int, int, int, int);
