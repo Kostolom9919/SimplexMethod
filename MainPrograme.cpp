@@ -62,6 +62,11 @@ int main() {
 		Table = _Table;
 		cout << endl;
 		OutAnswer(Table, Basis, n, m);
+		drob a1(0);
+		drob a2(-2);
+		drob a3(1);
+		drob a4(-7);
+		cout << ((a1*a2) - (a3*a4)) / a2;
 		cout << endl;
 		BasisNumber = FunctionOne(Table, n, m, x, y);
 		NewTable(Table, _Table, Basis, Not_Basis, n, m, x, y);

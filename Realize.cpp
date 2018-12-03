@@ -298,7 +298,7 @@ bool CheckTwo(drob** A, int n, int m) {
 		if (A[n][i] > 0) return true;
 	return false;
 }
-drob FunctionOne(drob** A, const int n, int m, int& base1, int& base2) {
+drob FunctionOne(drob** A, int n, int m, int& base1, int& base2) {
 	drob *a, answ;
 	int *index, i = 0;
 	index = new int[m];
@@ -314,8 +314,8 @@ drob FunctionOne(drob** A, const int n, int m, int& base1, int& base2) {
 		if (a[j - 1] == 1000)
 			a[j - 1] = -1000;
 		else
-			a[j - 1] = a[j - 1] * A[2][j];
-		if (A[2][j] == 0) a[j - 1] = -1000;
+			a[j - 1] = a[j - 1] * A[n][j];
+		if (A[n][j] == 0) a[j - 1] = -1000;
 	}
 	answ = -100;
 	for (i = 0; i < m; i++) {
@@ -339,10 +339,7 @@ void NewTable(drob ** A, drob** _A, std::string* C, std::string* _C, int n, int 
 	for (int i = 0; i < n + 1; i++) {
 		for (int j = 0; j < n + m + 1; j++) {
 			if (j != y && x != i) {
-				drob a1 = A[i][j] * Base;
-				drob a2 = A[i][y] * A[x][j];
-				drob a3 = a1 - a2;
-				_A[i][j] = a3 / Base;
+				_A[i][j] = ((A[i][j] * Base) - (A[i][y] * A[x][j])) / Base;
 			}
 			else if (i == x && j != y) {
 				_A[i][j] = A[i][j] / Base;
