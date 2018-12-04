@@ -247,14 +247,14 @@ bool operator<=(int a, drob b) {
 }
 std::ostream& operator<<(std::ostream &out, const drob &a) {
 	if (a.zn != 1) {
-		std::cout.width(3);
+		std::cout.width(4);
 		out << std::right << a.ch << "/";
-		std::cout.width(3);
+		std::cout.width(2);
 		out	<< std::left << a.zn;
 	}
 	else{
-		std::cout.width(4);
-		out << std::right << a.ch << "   ";
+		std::cout.width(5);
+		out << std::right << a.ch << "  ";
 	}
 	return out;
 }
@@ -340,13 +340,15 @@ void NewTable(drob ** A, drob** _A, std::string* C, std::string* _C, int n, int 
 		for (int j = 0; j < n + m + 1; j++) {
 			if (j != y && x != i) {
 				_A[i][j] = ((A[i][j] * Base) - (A[i][y] * A[x][j])) / Base;
-			}
-			else if (i == x && j != y) {
+			}else
+			if (i == x && j != y) {
 				_A[i][j] = A[i][j] / Base;
-			} 
-			else if (j == y){
-				_A[i][j] = A[i][m + x + 1];
-			} 
+			}else 
+			if (j == y && x == i){
+				_A[i][j] = 1;
+			}else
+			if (j == y && x != i)
+				_A[i][j] = 0;
 		}
 	}
 	return;
