@@ -5,4 +5,4 @@ check_task:
     folder: node_modules
     fingerprint_script: cat yarn.lock
     populate_script: yarn install
-  script: yarn test
+  script: yarn MainPrograme
