@@ -1,4 +1,5 @@
 language: cpp
 OS: windows
+dist: xenial
 script:
  - cmake ./
