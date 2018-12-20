@@ -326,16 +326,14 @@ drob FunctionOne(drob** A, int n, int m, int& base1, int& base2) {
 		}
 	}
 	answ = A[base1][base2];
-	delete a;
-	delete index;
+	delete[] a;
+	delete[] index;
 	return answ;
 }
 void NewTable(drob ** A, drob** _A, std::string* C, std::string* _C, int n, int m, int x, int y) {
 	std::string str;
 	drob Base = A[x][y];
-	str = C[x];
-	C[x] = _C[y - 1];
-	_C[y - 1] = str;
+	std::swap(C[x], _C[y - 1]);
 	for (int i = 0; i < n + 1; i++) {
 		for (int j = 0; j < n + m + 1; j++) {
 			if (j != y && x != i) {
@@ -343,7 +341,7 @@ void NewTable(drob ** A, drob** _A, std::string* C, std::string* _C, int n, int 
 			}else
 			if (i == x && j != y) {
 				_A[i][j] = A[i][j] / Base;
-			}else 
+			}else
 			if (j == y && x == i){
 				_A[i][j] = 1;
 			}else
