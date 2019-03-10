@@ -2,63 +2,35 @@
 #include <iostream>
 #include <string>
 
-class drob {
+class frac {
 private:
 	int ch, zn;
 public:
-	drob(int a, int b) { ch = a; if (b != 0)zn = b; else zn = 1; }
-	drob(int a) { ch = a; zn = 1; }
-	drob() { ch = 0; zn = 1; }
-	void Set(int a, int b) { ch = a; if (b != 0)zn = b; else zn = 1; }
+	frac(int a, int b) : ch(a) { zn = (b != 0) ? b : 0; }
+	frac(int a) : ch(a), zn(1) {}
+	frac() { ch = 0; zn = 1; }
+	void Set(int a, int b) { ch = a; zn = (b != 0) ? b : 0; }
 	void Set(int a) { ch = a; zn = 1;}
 	void Set() { ch = 0; zn = 1;}
-	friend drob operator+ (drob, drob);
-	friend drob operator+ (drob, int);
-	friend drob operator+ (int, drob);
 
-	friend drob operator- (drob, drob);
-	friend drob operator- (drob, int);
-	friend drob operator- (int, drob);
-
-	friend drob operator* (drob, drob);
-	friend drob operator* (drob, int);
-	friend drob operator* (int, drob);
-
-	friend drob operator/ (drob, drob);
-	friend drob operator/ (drob, int);
-	friend drob operator/ (int, drob);
-
-	friend bool operator==(drob, drob);
-	friend bool operator==(drob, int);
-	friend bool operator==(int, drob);
-
-	friend bool operator!=(drob, drob);
-	friend bool operator!=(drob, int);
-	friend bool operator!=(int, drob);
-
-	friend bool operator< (drob, drob);
-	friend bool operator< (drob, int);
-	friend bool operator< (int, drob);
-
-	friend bool operator> (drob, drob);
-	friend bool operator> (drob, int);
-	friend bool operator> (int, drob);
-
-	friend bool operator>=(drob, drob);
-	friend bool operator>=(drob, int);
-	friend bool operator>=(int, drob);
-
-	friend bool operator<=(drob, drob);
-	friend bool operator<=(drob, int);
-	friend bool operator<=(int, drob);
-	friend std::ostream& operator<<(std::ostream &out, const drob &a);
-	friend std::istream& operator>>(std::istream &in, drob &a);
+	friend frac operator+ (frac, frac);
+	friend frac operator- (frac, frac);
+	friend frac operator* (frac, frac);
+	friend frac operator/ (frac, frac);
+	friend bool operator==(frac, frac);
+	friend bool operator!=(frac, frac);
+	friend bool operator< (frac, frac);
+	friend bool operator> (frac, frac);
+	friend bool operator>=(frac, frac);
+	friend bool operator<=(frac, frac);
+	friend std::ostream& operator<<(std::ostream &out, const frac &a);
+	friend std::istream& operator>>(std::istream &in, frac &a);
 };
 
 int Nok(int, int);
 int Nod(int, int);
-void OutAnswer(drob**, std::string*, int, int);
-bool CheckOne(drob**, int);
-bool CheckTwo(drob**, int, int);
-drob FunctionOne(drob**, int, int ,int& ,int&);
-void NewTable(drob **, drob**, std::string*, std::string*, int, int, int, int);
+void OutAnswer(frac**, std::string*, int, int);
+bool CheckOne(frac**, int);
+bool CheckTwo(frac**, int, int);
+frac BasisOne(frac**, int, int ,int& ,int&);
+frac** NewTable(frac**, std::string*, std::string*, int, int, int, int);

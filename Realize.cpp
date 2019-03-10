@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
-drob operator+ (drob a, drob b) {
+frac operator+ (frac a, frac b) {
 	int x;
-	drob s;
+	frac s;
 	s.zn = a.zn * b.zn;
 	s.ch = a.ch * b.zn + b.ch * a.zn;
 	x = Nod(s.zn, (int)(abs((int)s.ch)));
@@ -14,37 +14,9 @@ drob operator+ (drob a, drob b) {
 		s.zn = 1;
 	return s;
 }
-drob operator+ (drob a, int b) {
+frac operator- (frac a, frac b) {
 	int x;
-	drob s;
-	s.zn = a.zn;
-	s.ch = a.ch + b * a.zn;
-	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	if (x != 0) {
-		s.ch /= x;
-		s.zn /= x;
-	}
-	if (s.ch == 0)
-		s.zn = 1;
-	return s;
-}
-drob operator+ (int a, drob b) {
-	int x;
-	drob s;
-	s.zn = b.zn;
-	s.ch = b.ch + a * b.zn;
-	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	if (x != 0) {
-		s.ch /= x;
-		s.zn /= x;
-	}
-	if (s.ch == 0)
-		s.zn = 1;
-	return s;
-}
-drob operator- (drob a, drob b) {
-	int x;
-	drob s;
+	frac s;
 	s.zn = a.zn * b.zn;
 	s.ch = a.ch * b.zn - b.ch * a.zn;
 	x = Nod(s.zn, (int)(abs((int)s.ch)));
@@ -56,35 +28,7 @@ drob operator- (drob a, drob b) {
 		s.zn = 1;
 	return s;
 }
-drob operator- (drob a, int b) {
-	int x;
-	drob s;
-	s.zn = a.zn;
-	s.ch = a.ch - b * a.zn;
-	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	if (x != 0) {
-		s.ch /= x;
-		s.zn /= x;
-	}
-	if (s.ch == 0)
-		s.zn = 1;
-	return s;
-}
-drob operator- (int a, drob b) {
-	int x;
-	drob s;
-	s.zn = b.zn;
-	s.ch = b.ch + a * b.zn;
-	x = Nod(s.zn, (int)(abs((int)s.ch)));
-	if (x != 0) {
-		s.ch /= x;
-		s.zn /= x;
-	}
-	if (s.ch == 0)
-		s.zn = 1;
-	return s;
-}
-drob operator* (drob a, drob b) {
+frac operator* (frac a, frac b) {
 	int x;
 	a.ch *= b.ch;
 	a.zn *= b.zn;
@@ -97,31 +41,7 @@ drob operator* (drob a, drob b) {
 		a.zn = 1;
 	return a;
 }
-drob operator* (drob a, int b) {
-	int x;
-	a.ch *= b;
-	x = Nod((int)(abs((int)a.ch)), a.zn);
-	if (x != 0) {
-		a.ch /= x;
-		a.zn /= x;
-	}
-	if (a.ch == 0)
-		a.zn = 1;
-	return a;
-}
-drob operator* (int a, drob b) {
-	int x;
-	b.ch *= a;
-	x = Nod((int)(abs((int)b.ch)), b.zn);
-	if (x != 0) {
-		b.ch /= x;
-		b.zn /= x;
-	}
-	if (b.ch == 0)
-		b.zn = 1;
-	return b;
-}
-drob operator/ (drob a, drob b) {
+frac operator/ (frac a, frac b) {
 	int x;
 	if (b < 0) {
 		b.ch *= -1;
@@ -138,114 +58,34 @@ drob operator/ (drob a, drob b) {
 		a.zn = 1;
 	return a;
 }
-drob operator/ (drob a, int b) {
-	int x;
-	a.zn *= b;
-	x = Nod((int)(abs((int)a.ch)), a.zn);
-	if (x != 0) {
-		a.ch /= x;
-		a.zn /= x;
-	}
-	if (a.ch == 0)
-		a.zn = 1;
-	return a;
-}
-drob operator/ (int a, drob b) {
-	int x;
-	b.ch *= a;
-	x = Nod((int)(abs((int)b.ch)), b.zn);
-	if (x != 0) {
-		b.ch /= x;
-		b.zn /= x;
-	}
-	if (b.ch == 0)
-		b.zn = 1;
-	return b;
-}
-bool operator==(drob a, drob b) {
+bool operator==(frac a, frac b) {
 	if (a.ch*b.zn == b.ch*a.zn)return true;
 	return false;
 }
-bool operator==(drob a, int b) {
-	if (a.ch == b * a.zn)return true;
-	return false;
-}
-bool operator==(int a, drob b) {
-	if (a*b.zn == b.ch)return true;
-	return false;
-}
-bool operator!=(drob a, drob b) {
+bool operator!=(frac a, frac b) {
 	if (!(a.ch*b.zn == b.ch*a.zn))return true;
 	return false;
 }
-bool operator!=(drob a, int b) {
-	if (!(a.ch == b*a.zn))return true;
-	return false;
-}
-bool operator!=(int a, drob b) {
-	if (!(a*b.zn == b.ch))return true;
-	return false;
-}
-bool operator< (drob a, drob b) {
+bool operator< (frac a, frac b) {
 	if (a.ch * b.zn < b.ch * a.zn)return true;
 	return false;
 }
-bool operator< (drob a, int b) {
-	if (a.ch < b * a.zn)
-		return true;
-	return false;
-}
-bool operator< (int a, drob b) {
-	if (a * b.zn < b.ch)
-		return true;
-	return false;
-}
-bool operator> (drob a, drob b) {
+bool operator> (frac a, frac b) {
 	if (a.ch * b.zn > b.ch * a.zn)
 		return true;
 	return false;
 }
-bool operator> (drob a, int b) {
-	if (a.ch > b * a.zn)
-		return true;
-	return false;
-}
-bool operator> (int a, drob b) {
-	if (a * b.zn > b.ch)
-		return true;
-	return false;
-}
-bool operator>=(drob a, drob b) {
+bool operator>=(frac a, frac b) {
 	if (a.ch * b.zn >= b.ch * a.zn)
 		return true;
 	return false;
 }
-bool operator>=(drob a, int b) {
-	if (a.ch >= b * a.zn)
-		return true;
-	return false;
-}
-bool operator>=(int a, drob b) {
-	if (a * b.zn >= b.ch)
-		return true;
-	return false;
-}
-bool operator<=(drob a, drob b) {
+bool operator<=(frac a, frac b) {
 	if (a.ch * b.zn <= b.ch * a.zn)
 		return true;
 	return false;
 }
-bool operator<=(drob a, int b) {
-	if (a.ch <= b * a.zn)
-		return true;
-	return false;
-}
-bool operator<=(int a, drob b) {
-	if (a * b.zn <= b.ch)
-		return true;
-	return false;
-}
-std::ostream& operator<<(std::ostream &out, const drob &a) {
+std::ostream& operator<<(std::ostream &out, const frac &a) {
 	if (a.zn != 1) {
 		std::cout.width(4);
 		out << std::right << a.ch << "/";
@@ -258,7 +98,7 @@ std::ostream& operator<<(std::ostream &out, const drob &a) {
 	}
 	return out;
 }
-std::istream& operator>>(std::istream &in, drob &a) {
+std::istream& operator>>(std::istream &in, frac &a) {
 	in >> a.ch;
 	if (getchar() == '/')
 		in >> a.zn;
@@ -273,7 +113,7 @@ int Nok(int a, int b) {
 int Nod(int a, int b) {
 	return b == 0 ? a : Nod(b, a % b);
 }
-void OutAnswer(drob **A, std::string* C, int n, int m) {
+void OutAnswer(frac **A, std::string* C, int n, int m) {
 	using namespace std;
 	for (int i = 0; i < n + 1 ; i++) {
 		if (i == n ) 
@@ -285,24 +125,26 @@ void OutAnswer(drob **A, std::string* C, int n, int m) {
 		}
 		cout << endl;
 	}
+	if (CheckOne(A, n)) cout << "Не оптимально 1" << endl;
+	else if (CheckTwo(A, n, m)) cout << "Не оптимально 2" << endl;
 	cout << endl;
 	return;
 }
-bool CheckOne(drob** A, int n) {
+bool CheckOne(frac** A, int n) {
 	for (int i = 0; i < n; i++)
 		if (A[i][0] < 0) return true;
 	return false;
 }
-bool CheckTwo(drob** A, int n, int m) {
+bool CheckTwo(frac** A, int n, int m) {
 	for (int i = 1; i < n + m + 1; i++)
 		if (A[n][i] > 0) return true;
 	return false;
 }
-drob FunctionOne(drob** A, int n, int m, int& base1, int& base2) {
-	drob *a, answ;
+frac BasisOne(frac** A, int n, int m, int& base1, int& base2) {
+	frac *a, answ;
 	int *index, i = 0;
 	index = new int[m];
-	a = new drob[m];	
+	a = new frac[m];	
 	for (int j = 1; j < m + 1; j++) {
 		a[j - 1] = 1000;
 		index[j - 1] = 1;
@@ -330,9 +172,14 @@ drob FunctionOne(drob** A, int n, int m, int& base1, int& base2) {
 	delete[] index;
 	return answ;
 }
-void NewTable(drob ** A, drob** _A, std::string* C, std::string* _C, int n, int m, int x, int y) {
-	std::string str;
-	drob Base = A[x][y];
+frac BasisTwo() {
+
+}
+frac** NewTable(frac** A, std::string* C, std::string* _C, int n, int m, int x, int y) {
+	frac** _A = new frac*[n + 1];
+	for (int i = 0; i < n + 1; i++)
+		_A[i] = new frac[n + m + 1];
+	frac Base = A[x][y];
 	std::swap(C[x], _C[y - 1]);
 	for (int i = 0; i < n + 1; i++) {
 		for (int j = 0; j < n + m + 1; j++) {
@@ -349,5 +196,8 @@ void NewTable(drob ** A, drob** _A, std::string* C, std::string* _C, int n, int 
 				_A[i][j] = 0;
 		}
 	}
-	return;
+	for (int i = 0; i < n; i++)
+		delete[] A[i];
+	delete[] A;
+	return _A;
 }
