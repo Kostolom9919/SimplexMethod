@@ -173,7 +173,7 @@ frac BasisOne(frac** A, int n, int m, int& base1, int& base2) {
 	return answ;
 }
 frac BasisTwo() {
-
+	return frac(1,1);
 }
 frac** NewTable(frac** A, std::string* C, std::string* _C, int n, int m, int x, int y) {
 	frac** _A = new frac*[n + 1];
